@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ReaderObject
@@ -28,5 +30,32 @@ namespace ReaderObject
             return employe;
         }
 
+        public static List<Employe> FindAllEmployes()
+        {
+            var connection = new OracleConnection
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString
+            };
+
+            connection.Open();
+
+            // Commande sql
+            var command = new OracleCommand("SELECT * FROM EMPLOYE", connection);
+            var reader = command.ExecuteReader();
+
+            // Création de la collexion
+            var employes = new List<Employe>();
+
+            // Remplisage de la collection
+            while (reader.Read())
+            {
+                employes.Add(HydrateEmploye(reader));
+            }
+
+            connection.Close();
+            connection.Dispose();
+
+            return employes;
+        }
     }
 }
