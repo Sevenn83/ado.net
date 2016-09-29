@@ -67,5 +67,32 @@ namespace ReaderObject
 
             return employes;
         }
+
+        public static Employe FindEmployeById(short id)
+        {
+            var employe = new Employe();
+
+            var connection = new OracleConnection
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString
+            };
+
+            // Commande sql
+            var command = new OracleCommand("SELECT * FROM EMPLOYE WHERE numemp=:numemp", connection);
+            var pID = new OracleParameter("numemp", OracleDbType.Int16, System.Data.ParameterDirection.Input);
+            pID.Value = id;
+            command.Parameters.Add(pID);
+
+            connection.Open();
+            var reader = command.ExecuteReader();
+
+            if (reader.Read())
+                employe = HydrateEmploye(reader);
+
+            connection.Close();
+            connection.Dispose();
+
+            return employe;
+        }
     }
 }
