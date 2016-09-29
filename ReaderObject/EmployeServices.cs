@@ -7,6 +7,12 @@ namespace ReaderObject
 {
     internal abstract class EmployeServices
     {
+
+        /// <summary>
+        /// Créer un objet hydrater grace à un datereader
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns>Objet hydraté</returns>
         public static Employe HydrateEmploye(OracleDataReader reader)
         {
             var employe = new Employe();
@@ -30,6 +36,10 @@ namespace ReaderObject
             return employe;
         }
 
+        /// <summary>
+        /// Retourne une liste de tout les employé
+        /// </summary>
+        /// <returns></returns>
         public static List<Employe> FindAllEmployes()
         {
             var connection = new OracleConnection
