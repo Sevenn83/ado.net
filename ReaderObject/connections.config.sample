@@ -1,0 +1,5 @@
+<connectionStrings>
+  <add name="oracledb"
+       providerName="System.Data.Oracle"
+       connectionString="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=host)(PORT=port))(CONNECT_DATA=(SERVICE_NAME=sui)));User Id=foo;Password=bar;" />
+</connectionStrings>
