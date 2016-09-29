@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using System.Collections.ObjectModel;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ReaderObject
 {
@@ -6,6 +7,10 @@ namespace ReaderObject
     {
         private static void Main()
         {
+
+            var Employes = new Collection<Employe>();
+
+
         }
     }
 }
