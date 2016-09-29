@@ -2,6 +2,7 @@
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace ReaderObject
 {
@@ -15,8 +16,21 @@ namespace ReaderObject
                 {
                     ConnectionString = ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString
                 };
+
                 connection.Open();
-                Console.WriteLine("Connection établie");
+
+                var command = new OracleCommand("SELECT * FROM EMPLOYE", connection);
+                var reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine("{0}\t{1}", reader.GetInt32(0), reader.GetString(1));
+                    }
+                } else 
+                    Console.WriteLine("no rows found.");
+
                 connection.Close();
                 connection.Dispose();
                 Console.WriteLine("Appuyez sur une touche pour continuer ...");
