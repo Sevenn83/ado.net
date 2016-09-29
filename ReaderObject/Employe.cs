@@ -13,7 +13,7 @@ namespace ReaderObject
         public string CodeProjet { get; set; }
         public short? Superieur { get; set; }
 
-        public Employe(short numEmp, string nomEmp, string prenomEmp, string poste, float salaire, float? prime, string codeProjet, short? superieur)
+        /*public Employe(short numEmp, string nomEmp, string prenomEmp, string poste, float salaire, float? prime, string codeProjet, short? superieur)
         {
             NumEmp = numEmp;
             NomEmp = nomEmp;
@@ -23,7 +23,7 @@ namespace ReaderObject
             Prime = prime;
             CodeProjet = codeProjet;
             Superieur = superieur;
-        }
+        }*/
 
         public override string ToString()
         {
