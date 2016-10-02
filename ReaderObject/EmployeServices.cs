@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ReaderObject
 {
     internal abstract class EmployeServices
     {
+        private static readonly OracleConnection CnoOracleConnection = Bdd.GetOracleConnection();
 
         /// <summary>
         /// Créer un objet hydrater grace à un datereader
@@ -42,15 +42,10 @@ namespace ReaderObject
         /// <returns></returns>
         public static List<Employe> FindAllEmployes()
         {
-            var connection = new OracleConnection
-            {
-                ConnectionString = ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString
-            };
-
-            connection.Open();
+            CnoOracleConnection.Open();
 
             // Commande sql
-            var command = new OracleCommand("SELECT * FROM EMPLOYE", connection);
+            var command = new OracleCommand("SELECT * FROM EMPLOYE", CnoOracleConnection);
             var reader = command.ExecuteReader();
 
             // Création de la collexion
@@ -62,8 +57,8 @@ namespace ReaderObject
                 employes.Add(HydrateEmploye(reader));
             }
 
-            connection.Close();
-            connection.Dispose();
+            CnoOracleConnection.Close();
+            CnoOracleConnection.Dispose();
 
             return employes;
         }
@@ -72,25 +67,20 @@ namespace ReaderObject
         {
             var employe = new Employe();
 
-            var connection = new OracleConnection
-            {
-                ConnectionString = ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString
-            };
-
             // Commande sql
-            var command = new OracleCommand("SELECT * FROM EMPLOYE WHERE numemp=:numemp", connection);
+            var command = new OracleCommand("SELECT * FROM EMPLOYE WHERE numemp=:numemp", CnoOracleConnection);
             var pID = new OracleParameter("numemp", OracleDbType.Int16, System.Data.ParameterDirection.Input);
             pID.Value = id;
             command.Parameters.Add(pID);
 
-            connection.Open();
+            CnoOracleConnection.Open();
             var reader = command.ExecuteReader();
 
             if (reader.Read())
                 employe = HydrateEmploye(reader);
 
-            connection.Close();
-            connection.Dispose();
+            CnoOracleConnection.Close();
+            CnoOracleConnection.Dispose();
 
             return employe;
         }
