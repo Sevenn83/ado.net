@@ -3,20 +3,20 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace ReaderObject
 {
-    internal abstract class Bdd
+    internal class Bdd
     {
+        public OracleConnection CnOracle { get; set; }
 
-        public static OracleConnection GetOracleConnection()
+        public Bdd ()
         {
-            return new OracleConnection
-            {
-                ConnectionString = string.Format(ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString, ConfigurationManager.AppSettings["SERVEUR"],
+            var ch = string.Format(ConfigurationManager.ConnectionStrings["oracledb"].ConnectionString,
+                ConfigurationManager.AppSettings["SERVEUR"],
                 ConfigurationManager.AppSettings["PORT"],
                 ConfigurationManager.AppSettings["SID"],
                 ConfigurationManager.AppSettings["USERID"],
-                ConfigurationManager.AppSettings["PWD"])
-            };
-        }
+                ConfigurationManager.AppSettings["PWD"]);
 
+            CnOracle = new OracleConnection(ch);
+        }
     }
 }

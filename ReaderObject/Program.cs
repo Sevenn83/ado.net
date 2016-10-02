@@ -8,10 +8,11 @@ namespace ReaderObject
         {
             try
             {
+                var serviceEmploye = new EmployeServices();
 
-                var Employes = EmployeServices.FindAllEmployes();
+                var employes = serviceEmploye.FindAllEmployes();
 
-                foreach (var employe in Employes)
+                foreach (var employe in employes)
                 {
                     Console.WriteLine(employe.ToString());
                 }

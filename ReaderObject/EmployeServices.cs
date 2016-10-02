@@ -4,9 +4,18 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace ReaderObject
 {
-    internal abstract class EmployeServices
+    internal class EmployeServices
     {
-        private static readonly OracleConnection CnoOracleConnection = Bdd.GetOracleConnection();
+        private static EmployeServices _instance;
+        private readonly OracleConnection _cnOracleConnection;
+
+        public EmployeServices()
+        {
+            var bdd = new Bdd();
+            _cnOracleConnection = bdd.CnOracle;
+        }
+
+        public static EmployeServices Instance => _instance ?? (_instance = new EmployeServices());
 
         /// <summary>
         /// Créer un objet hydrater grace à un datereader
@@ -40,49 +49,55 @@ namespace ReaderObject
         /// Retourne une liste de tout les employé
         /// </summary>
         /// <returns></returns>
-        public static List<Employe> FindAllEmployes()
+        public List<Employe> FindAllEmployes()
         {
-            CnoOracleConnection.Open();
-
-            // Commande sql
-            var command = new OracleCommand("SELECT * FROM EMPLOYE", CnoOracleConnection);
-            var reader = command.ExecuteReader();
-
-            // Création de la collexion
-            var employes = new List<Employe>();
-
-            // Remplisage de la collection
-            while (reader.Read())
+            using (_cnOracleConnection)
             {
-                employes.Add(HydrateEmploye(reader));
+                _cnOracleConnection.Open();
+
+                // Commande sql
+                var command = new OracleCommand("SELECT * FROM EMPLOYE", _cnOracleConnection);
+                var reader = command.ExecuteReader();
+
+                // Création de la collexion
+                var employes = new List<Employe>();
+
+                // Remplisage de la collection
+                while (reader.Read())
+                {
+                    employes.Add(HydrateEmploye(reader));
+                }
+
+                _cnOracleConnection.Close();
+                _cnOracleConnection.Dispose();
+
+                return employes;
             }
-
-            CnoOracleConnection.Close();
-            CnoOracleConnection.Dispose();
-
-            return employes;
         }
 
-        public static Employe FindEmployeById(short id)
+        public Employe FindEmployeById(short id)
         {
-            var employe = new Employe();
+            using (_cnOracleConnection)
+            {
+                var employe = new Employe();
 
-            // Commande sql
-            var command = new OracleCommand("SELECT * FROM EMPLOYE WHERE numemp=:numemp", CnoOracleConnection);
-            var pID = new OracleParameter("numemp", OracleDbType.Int16, System.Data.ParameterDirection.Input);
-            pID.Value = id;
-            command.Parameters.Add(pID);
+                // Commande sql
+                var command = new OracleCommand("SELECT * FROM EMPLOYE WHERE numemp=:numemp", _cnOracleConnection);
+                var pID = new OracleParameter("numemp", OracleDbType.Int16, System.Data.ParameterDirection.Input);
+                pID.Value = id;
+                command.Parameters.Add(pID);
 
-            CnoOracleConnection.Open();
-            var reader = command.ExecuteReader();
+                _cnOracleConnection.Open();
+                var reader = command.ExecuteReader();
 
-            if (reader.Read())
-                employe = HydrateEmploye(reader);
+                if (reader.Read())
+                    employe = HydrateEmploye(reader);
 
-            CnoOracleConnection.Close();
-            CnoOracleConnection.Dispose();
+                _cnOracleConnection.Close();
+                _cnOracleConnection.Dispose();
 
-            return employe;
+                return employe;
+            }
         }
     }
 }
