@@ -9,15 +9,15 @@ namespace ReaderObject
             try
             {
 
-                /*var Employes = EmployeServices.FindAllEmployes();
+                var Employes = EmployeServices.FindAllEmployes();
 
                 foreach (var employe in Employes)
                 {
                     Console.WriteLine(employe.ToString());
-                }*/
+                }
 
-                var employefinded = EmployeServices.FindEmployeById(1);
-                Console.WriteLine(employefinded.ToString());
+                /*var employefinded = EmployeServices.FindEmployeById(1);
+                Console.WriteLine(employefinded.ToString());*/
 
                 Console.WriteLine("Appuyez sur une touche pour continuer ...");
                 Console.ReadKey();
