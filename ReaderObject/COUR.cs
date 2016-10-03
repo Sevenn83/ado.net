@@ -12,12 +12,12 @@ namespace ReaderObject
     using System;
     using System.Collections.Generic;
     
-    public partial class COURS
+    public partial class COUR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public COURS()
+        public COUR()
         {
-            this.SEMINAIRE = new HashSet<SEMINAIRE>();
+            this.SEMINAIREs = new HashSet<SEMINAIRE>();
         }
     
         public string CODECOURS { get; set; }
@@ -25,6 +25,6 @@ namespace ReaderObject
         public decimal NBJOURS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SEMINAIRE> SEMINAIRE { get; set; }
+        public virtual ICollection<SEMINAIRE> SEMINAIREs { get; set; }
     }
 }

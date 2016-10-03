@@ -17,7 +17,7 @@ namespace ReaderObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PROJET()
         {
-            this.EMPLOYE = new HashSet<EMPLOYE>();
+            this.EMPLOYEs = new HashSet<EMPLOYE>();
         }
     
         public string CODEPROJET { get; set; }
@@ -27,6 +27,6 @@ namespace ReaderObject
         public string NOMCONTACT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLOYE> EMPLOYE { get; set; }
+        public virtual ICollection<EMPLOYE> EMPLOYEs { get; set; }
     }
 }

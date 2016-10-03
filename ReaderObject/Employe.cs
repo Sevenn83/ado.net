@@ -18,7 +18,7 @@ namespace ReaderObject
         public EMPLOYE()
         {
             this.EMPLOYE1 = new HashSet<EMPLOYE>();
-            this.INSCRIT = new HashSet<INSCRIT>();
+            this.INSCRITs = new HashSet<INSCRIT>();
         }
     
         public decimal NUMEMP { get; set; }
@@ -35,6 +35,6 @@ namespace ReaderObject
         public virtual EMPLOYE EMPLOYE2 { get; set; }
         public virtual PROJET PROJET { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCRIT> INSCRIT { get; set; }
+        public virtual ICollection<INSCRIT> INSCRITs { get; set; }
     }
 }

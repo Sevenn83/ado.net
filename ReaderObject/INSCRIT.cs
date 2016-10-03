@@ -17,7 +17,7 @@ namespace ReaderObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INSCRIT()
         {
-            this.PARTICIPER = new HashSet<PARTICIPER>();
+            this.PARTICIPERs = new HashSet<PARTICIPER>();
         }
     
         public decimal NUMEMP { get; set; }
@@ -27,6 +27,6 @@ namespace ReaderObject
         public virtual EMPLOYE EMPLOYE { get; set; }
         public virtual SEMINAIRE SEMINAIRE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PARTICIPER> PARTICIPER { get; set; }
+        public virtual ICollection<PARTICIPER> PARTICIPERs { get; set; }
     }
 }

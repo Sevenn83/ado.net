@@ -17,15 +17,15 @@ namespace ReaderObject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SEMINAIRE()
         {
-            this.INSCRIT = new HashSet<INSCRIT>();
+            this.INSCRITs = new HashSet<INSCRIT>();
         }
     
         public string CODESEMI { get; set; }
         public string CODECOURS { get; set; }
         public System.DateTime DATEDEBUTSEM { get; set; }
     
-        public virtual COURS COURS { get; set; }
+        public virtual COUR COUR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCRIT> INSCRIT { get; set; }
+        public virtual ICollection<INSCRIT> INSCRITs { get; set; }
     }
 }

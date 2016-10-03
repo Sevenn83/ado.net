@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ReaderObject
 {
@@ -8,17 +9,18 @@ namespace ReaderObject
         {
             try
             {
-                var serviceEmploye = new EmployeServices();
-
-                var employes = serviceEmploye.FindAllEmployes();
-
-                foreach (var employe in employes)
+                using (var oracleContexte = new OracleEntities())
                 {
-                    Console.WriteLine(employe.ToString());
-                }
+                    var requeteEmployes = from EMPLOYE in oracleContexte.EMPLOYE
+                                            select EMPLOYE;
 
-                /*var employefinded = EmployeServices.FindEmployeById(1);
-                Console.WriteLine(employefinded.ToString());*/
+                    var lesEmployes = requeteEmployes.ToList();
+
+                    foreach (var unEmploye in lesEmployes)
+                    {
+                        Console.WriteLine(unEmploye.NUMEMP + " - " + unEmploye.NOMEMP);
+                    }
+                }
 
                 Console.WriteLine("Appuyez sur une touche pour continuer ...");
                 Console.ReadKey();

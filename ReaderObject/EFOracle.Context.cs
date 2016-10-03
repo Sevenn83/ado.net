@@ -25,11 +25,11 @@ namespace ReaderObject
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<COURS> COURS { get; set; }
-        public virtual DbSet<EMPLOYE> EMPLOYE { get; set; }
-        public virtual DbSet<INSCRIT> INSCRIT { get; set; }
-        public virtual DbSet<PARTICIPER> PARTICIPER { get; set; }
-        public virtual DbSet<PROJET> PROJET { get; set; }
-        public virtual DbSet<SEMINAIRE> SEMINAIRE { get; set; }
+        public virtual DbSet<COUR> COURS { get; set; }
+        public virtual DbSet<EMPLOYE> EMPLOYEs { get; set; }
+        public virtual DbSet<INSCRIT> INSCRITs { get; set; }
+        public virtual DbSet<PARTICIPER> PARTICIPERs { get; set; }
+        public virtual DbSet<PROJET> PROJETs { get; set; }
+        public virtual DbSet<SEMINAIRE> SEMINAIREs { get; set; }
     }
 }

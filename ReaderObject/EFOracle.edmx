@@ -182,14 +182,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoursAdoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="COURS">
+        <EntityType Name="COUR">
           <Key>
             <PropertyRef Name="CODECOURS" />
           </Key>
           <Property Name="CODECOURS" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LIBELLECOURS" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NBJOURS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="SEMINAIRE" Relationship="Self.FK_SEMINAIRE_COURS" FromRole="COURS" ToRole="SEMINAIRE" />
+          <NavigationProperty Name="SEMINAIREs" Relationship="Self.FK_SEMINAIRE_COURS" FromRole="COURS" ToRole="SEMINAIRE" />
         </EntityType>
         <EntityType Name="EMPLOYE">
           <Key>
@@ -206,7 +206,7 @@
           <NavigationProperty Name="EMPLOYE1" Relationship="Self.FK_EMPLOYE_EMPLOYE" FromRole="EMPLOYE" ToRole="EMPLOYE1" />
           <NavigationProperty Name="EMPLOYE2" Relationship="Self.FK_EMPLOYE_EMPLOYE" FromRole="EMPLOYE1" ToRole="EMPLOYE" />
           <NavigationProperty Name="PROJET" Relationship="Self.FK_EMPLOYE_PROJET" FromRole="EMPLOYE" ToRole="PROJET" />
-          <NavigationProperty Name="INSCRIT" Relationship="Self.FK_INSCRIT_EMPLOYE" FromRole="EMPLOYE" ToRole="INSCRIT" />
+          <NavigationProperty Name="INSCRITs" Relationship="Self.FK_INSCRIT_EMPLOYE" FromRole="EMPLOYE" ToRole="INSCRIT" />
         </EntityType>
         <EntityType Name="INSCRIT">
           <Key>
@@ -218,7 +218,7 @@
           <Property Name="DATEINSCRIT" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="EMPLOYE" Relationship="Self.FK_INSCRIT_EMPLOYE" FromRole="INSCRIT" ToRole="EMPLOYE" />
           <NavigationProperty Name="SEMINAIRE" Relationship="Self.FK_INSCRIT_SEMINAIRE" FromRole="INSCRIT" ToRole="SEMINAIRE" />
-          <NavigationProperty Name="PARTICIPER" Relationship="Self.FK_PARTICIPER_INSCRIT" FromRole="INSCRIT" ToRole="PARTICIPER" />
+          <NavigationProperty Name="PARTICIPERs" Relationship="Self.FK_PARTICIPER_INSCRIT" FromRole="INSCRIT" ToRole="PARTICIPER" />
         </EntityType>
         <EntityType Name="PARTICIPER">
           <Key>
@@ -240,7 +240,7 @@
           <Property Name="DEBUTPROJ" Type="DateTime" Nullable="false" />
           <Property Name="FINPREVUE" Type="DateTime" Nullable="false" />
           <Property Name="NOMCONTACT" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="EMPLOYE" Relationship="Self.FK_EMPLOYE_PROJET" FromRole="PROJET" ToRole="EMPLOYE" />
+          <NavigationProperty Name="EMPLOYEs" Relationship="Self.FK_EMPLOYE_PROJET" FromRole="PROJET" ToRole="EMPLOYE" />
         </EntityType>
         <EntityType Name="SEMINAIRE">
           <Key>
@@ -249,11 +249,11 @@
           <Property Name="CODESEMI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CODECOURS" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DATEDEBUTSEM" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="COURS" Relationship="Self.FK_SEMINAIRE_COURS" FromRole="SEMINAIRE" ToRole="COURS" />
-          <NavigationProperty Name="INSCRIT" Relationship="Self.FK_INSCRIT_SEMINAIRE" FromRole="SEMINAIRE" ToRole="INSCRIT" />
+          <NavigationProperty Name="COUR" Relationship="Self.FK_SEMINAIRE_COURS" FromRole="SEMINAIRE" ToRole="COURS" />
+          <NavigationProperty Name="INSCRITs" Relationship="Self.FK_INSCRIT_SEMINAIRE" FromRole="SEMINAIRE" ToRole="INSCRIT" />
         </EntityType>
         <Association Name="FK_SEMINAIRE_COURS">
-          <End Role="COURS" Type="Self.COURS" Multiplicity="1">
+          <End Role="COURS" Type="Self.COUR" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="SEMINAIRE" Type="Self.SEMINAIRE" Multiplicity="*" />
@@ -335,35 +335,35 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="OracleEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="COURS" EntityType="Self.COURS" />
-          <EntitySet Name="EMPLOYE" EntityType="Self.EMPLOYE" />
-          <EntitySet Name="INSCRIT" EntityType="Self.INSCRIT" />
-          <EntitySet Name="PARTICIPER" EntityType="Self.PARTICIPER" />
-          <EntitySet Name="PROJET" EntityType="Self.PROJET" />
-          <EntitySet Name="SEMINAIRE" EntityType="Self.SEMINAIRE" />
+          <EntitySet Name="COURS" EntityType="Self.COUR" />
+          <EntitySet Name="EMPLOYEs" EntityType="Self.EMPLOYE" />
+          <EntitySet Name="INSCRITs" EntityType="Self.INSCRIT" />
+          <EntitySet Name="PARTICIPERs" EntityType="Self.PARTICIPER" />
+          <EntitySet Name="PROJETs" EntityType="Self.PROJET" />
+          <EntitySet Name="SEMINAIREs" EntityType="Self.SEMINAIRE" />
           <AssociationSet Name="FK_SEMINAIRE_COURS" Association="Self.FK_SEMINAIRE_COURS">
             <End Role="COURS" EntitySet="COURS" />
-            <End Role="SEMINAIRE" EntitySet="SEMINAIRE" />
+            <End Role="SEMINAIRE" EntitySet="SEMINAIREs" />
           </AssociationSet>
           <AssociationSet Name="FK_EMPLOYE_EMPLOYE" Association="Self.FK_EMPLOYE_EMPLOYE">
-            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
-            <End Role="EMPLOYE1" EntitySet="EMPLOYE" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYEs" />
+            <End Role="EMPLOYE1" EntitySet="EMPLOYEs" />
           </AssociationSet>
           <AssociationSet Name="FK_EMPLOYE_PROJET" Association="Self.FK_EMPLOYE_PROJET">
-            <End Role="PROJET" EntitySet="PROJET" />
-            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
+            <End Role="PROJET" EntitySet="PROJETs" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYEs" />
           </AssociationSet>
           <AssociationSet Name="FK_INSCRIT_EMPLOYE" Association="Self.FK_INSCRIT_EMPLOYE">
-            <End Role="EMPLOYE" EntitySet="EMPLOYE" />
-            <End Role="INSCRIT" EntitySet="INSCRIT" />
+            <End Role="EMPLOYE" EntitySet="EMPLOYEs" />
+            <End Role="INSCRIT" EntitySet="INSCRITs" />
           </AssociationSet>
           <AssociationSet Name="FK_INSCRIT_SEMINAIRE" Association="Self.FK_INSCRIT_SEMINAIRE">
-            <End Role="SEMINAIRE" EntitySet="SEMINAIRE" />
-            <End Role="INSCRIT" EntitySet="INSCRIT" />
+            <End Role="SEMINAIRE" EntitySet="SEMINAIREs" />
+            <End Role="INSCRIT" EntitySet="INSCRITs" />
           </AssociationSet>
           <AssociationSet Name="FK_PARTICIPER_INSCRIT" Association="Self.FK_PARTICIPER_INSCRIT">
-            <End Role="INSCRIT" EntitySet="INSCRIT" />
-            <End Role="PARTICIPER" EntitySet="PARTICIPER" />
+            <End Role="INSCRIT" EntitySet="INSCRITs" />
+            <End Role="PARTICIPER" EntitySet="PARTICIPERs" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -373,7 +373,7 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CoursAdoModelStoreContainer" CdmEntityContainer="OracleEntities">
           <EntitySetMapping Name="COURS">
-            <EntityTypeMapping TypeName="CoursAdoModel.COURS">
+            <EntityTypeMapping TypeName="CoursAdoModel.COUR">
               <MappingFragment StoreEntitySet="COURS">
                 <ScalarProperty Name="CODECOURS" ColumnName="CODECOURS" />
                 <ScalarProperty Name="LIBELLECOURS" ColumnName="LIBELLECOURS" />
@@ -381,7 +381,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EMPLOYE">
+          <EntitySetMapping Name="EMPLOYEs">
             <EntityTypeMapping TypeName="CoursAdoModel.EMPLOYE">
               <MappingFragment StoreEntitySet="EMPLOYE">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
@@ -395,7 +395,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="INSCRIT">
+          <EntitySetMapping Name="INSCRITs">
             <EntityTypeMapping TypeName="CoursAdoModel.INSCRIT">
               <MappingFragment StoreEntitySet="INSCRIT">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
@@ -404,7 +404,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PARTICIPER">
+          <EntitySetMapping Name="PARTICIPERs">
             <EntityTypeMapping TypeName="CoursAdoModel.PARTICIPER">
               <MappingFragment StoreEntitySet="PARTICIPER">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
@@ -413,7 +413,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PROJET">
+          <EntitySetMapping Name="PROJETs">
             <EntityTypeMapping TypeName="CoursAdoModel.PROJET">
               <MappingFragment StoreEntitySet="PROJET">
                 <ScalarProperty Name="CODEPROJET" ColumnName="CODEPROJET" />
@@ -424,7 +424,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SEMINAIRE">
+          <EntitySetMapping Name="SEMINAIREs">
             <EntityTypeMapping TypeName="CoursAdoModel.SEMINAIRE">
               <MappingFragment StoreEntitySet="SEMINAIRE">
                 <ScalarProperty Name="CODESEMI" ColumnName="CODESEMI" />
@@ -447,7 +447,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
