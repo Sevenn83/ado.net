@@ -12,29 +12,21 @@ namespace ReaderObject
     using System;
     using System.Collections.Generic;
     
-    public partial class EMPLOYE
+    public partial class INSCRIT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EMPLOYE()
+        public INSCRIT()
         {
-            this.EMPLOYE1 = new HashSet<EMPLOYE>();
-            this.INSCRIT = new HashSet<INSCRIT>();
+            this.PARTICIPER = new HashSet<PARTICIPER>();
         }
     
         public decimal NUMEMP { get; set; }
-        public string NOMEMP { get; set; }
-        public string PRENOMEMP { get; set; }
-        public string POSTE { get; set; }
-        public decimal SALAIRE { get; set; }
-        public Nullable<decimal> PRIME { get; set; }
-        public string CODEPROJET { get; set; }
-        public Nullable<decimal> SUPERIEUR { get; set; }
+        public string CODESEMI { get; set; }
+        public System.DateTime DATEINSCRIT { get; set; }
     
+        public virtual EMPLOYE EMPLOYE { get; set; }
+        public virtual SEMINAIRE SEMINAIRE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EMPLOYE> EMPLOYE1 { get; set; }
-        public virtual EMPLOYE EMPLOYE2 { get; set; }
-        public virtual PROJET PROJET { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSCRIT> INSCRIT { get; set; }
+        public virtual ICollection<PARTICIPER> PARTICIPER { get; set; }
     }
 }
