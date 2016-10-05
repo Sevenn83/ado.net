@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1824bd0d36384736a1f403dbf8598250" Name="Diagram1">
-        <EntityTypeShape EntityType="CoursAdoModel.COUR" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoursAdoModel.EMPLOYE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoursAdoModel.INSCRIT" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoursAdoModel.PARTICIPER" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoursAdoModel.PROJET" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoursAdoModel.SEMINAIRE" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <AssociationConnector Association="CoursAdoModel.FK_SEMINAIRE_COURS" ManuallyRouted="false" />
-        <AssociationConnector Association="CoursAdoModel.FK_EMPLOYE_EMPLOYE" ManuallyRouted="false" />
-        <AssociationConnector Association="CoursAdoModel.FK_EMPLOYE_PROJET" ManuallyRouted="false" />
-        <AssociationConnector Association="CoursAdoModel.FK_INSCRIT_EMPLOYE" ManuallyRouted="false" />
-        <AssociationConnector Association="CoursAdoModel.FK_INSCRIT_SEMINAIRE" ManuallyRouted="false" />
-        <AssociationConnector Association="CoursAdoModel.FK_PARTICIPER_INSCRIT" ManuallyRouted="false" />
+      <Diagram DiagramId="71ec6c99e98a403ead667de37ea5ff7c" Name="Diagram1">
+        <EntityTypeShape EntityType="EFOracleModel.COUR" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOracleModel.EMPLOYE" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOracleModel.INSCRIT" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOracleModel.PARTICIPER" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOracleModel.PROJET" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFOracleModel.SEMINAIRE" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="EFOracleModel.FK_SEMINAIRE_COURS" ManuallyRouted="false" />
+        <AssociationConnector Association="EFOracleModel.FK_EMPLOYE_EMPLOYE" ManuallyRouted="false" />
+        <AssociationConnector Association="EFOracleModel.FK_EMPLOYE_PROJET" ManuallyRouted="false" />
+        <AssociationConnector Association="EFOracleModel.FK_INSCRIT_EMPLOYE" ManuallyRouted="false" />
+        <AssociationConnector Association="EFOracleModel.FK_INSCRIT_SEMINAIRE" ManuallyRouted="false" />
+        <AssociationConnector Association="EFOracleModel.FK_PARTICIPER_INSCRIT" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

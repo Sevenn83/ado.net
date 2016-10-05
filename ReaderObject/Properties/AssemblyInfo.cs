@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("ReaderObject")]
+[assembly: AssemblyTitle("EntityFrameworkOracle")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ReaderObject")]
+[assembly: AssemblyProduct("EntityFrameworkOracle")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("6de61974-35de-47fc-a85b-ee8b1333303f")]
+[assembly: Guid("0885784a-8054-4d58-9811-d37d99d6dadf")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

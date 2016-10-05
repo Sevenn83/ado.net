@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using EntityFrameworkOracle;
 
 namespace ReaderObject
 {
@@ -9,10 +10,10 @@ namespace ReaderObject
         {
             try
             {
-                using (var oracleContexte = new OracleEntities())
+                using (var oracleContexte = new EFOracleEntities())
                 {
-                    var requeteEmployes = from EMPLOYE in oracleContexte.EMPLOYE
-                                            select EMPLOYE;
+                    var requeteEmployes = from e in oracleContexte.EMPLOYEs
+                                          select e;
 
                     var lesEmployes = requeteEmployes.ToList();
 
@@ -28,6 +29,7 @@ namespace ReaderObject
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
                 Console.WriteLine("Appuyez sur une touche pour continuer ...");
                 Console.ReadKey();
             }

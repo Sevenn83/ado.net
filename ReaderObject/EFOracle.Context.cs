@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReaderObject
+namespace EntityFrameworkOracle
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OracleEntities : DbContext
+    public partial class EFOracleEntities : DbContext
     {
-        public OracleEntities()
-            : base("name=OracleEntities")
+        public EFOracleEntities()
+            : base("name=EFOracleEntities")
         {
         }
     

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ReaderObject
+namespace EntityFrameworkOracle
 {
     using System;
     using System.Collections.Generic;

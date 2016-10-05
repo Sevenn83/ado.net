@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CoursAdoModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EFOracleModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COURS">
           <Key>
             <PropertyRef Name="CODECOURS" />
@@ -145,7 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CoursAdoModelStoreContainer">
+        <EntityContainer Name="EFOracleModelStoreContainer">
           <EntitySet Name="COURS" EntityType="Self.COURS" Schema="SALTELSQL" store:Type="Tables" />
           <EntitySet Name="EMPLOYE" EntityType="Self.EMPLOYE" Schema="SALTELSQL" store:Type="Tables" />
           <EntitySet Name="INSCRIT" EntityType="Self.INSCRIT" Schema="SALTELSQL" store:Type="Tables" />
@@ -181,7 +181,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CoursAdoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EFOracleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="COUR">
           <Key>
             <PropertyRef Name="CODECOURS" />
@@ -334,7 +334,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OracleEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EFOracleEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COURS" EntityType="Self.COUR" />
           <EntitySet Name="EMPLOYEs" EntityType="Self.EMPLOYE" />
           <EntitySet Name="INSCRITs" EntityType="Self.INSCRIT" />
@@ -371,9 +371,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CoursAdoModelStoreContainer" CdmEntityContainer="OracleEntities">
+        <EntityContainerMapping StorageEntityContainer="EFOracleModelStoreContainer" CdmEntityContainer="EFOracleEntities">
           <EntitySetMapping Name="COURS">
-            <EntityTypeMapping TypeName="CoursAdoModel.COUR">
+            <EntityTypeMapping TypeName="EFOracleModel.COUR">
               <MappingFragment StoreEntitySet="COURS">
                 <ScalarProperty Name="CODECOURS" ColumnName="CODECOURS" />
                 <ScalarProperty Name="LIBELLECOURS" ColumnName="LIBELLECOURS" />
@@ -382,7 +382,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPLOYEs">
-            <EntityTypeMapping TypeName="CoursAdoModel.EMPLOYE">
+            <EntityTypeMapping TypeName="EFOracleModel.EMPLOYE">
               <MappingFragment StoreEntitySet="EMPLOYE">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
                 <ScalarProperty Name="NOMEMP" ColumnName="NOMEMP" />
@@ -396,7 +396,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="INSCRITs">
-            <EntityTypeMapping TypeName="CoursAdoModel.INSCRIT">
+            <EntityTypeMapping TypeName="EFOracleModel.INSCRIT">
               <MappingFragment StoreEntitySet="INSCRIT">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
                 <ScalarProperty Name="CODESEMI" ColumnName="CODESEMI" />
@@ -405,7 +405,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PARTICIPERs">
-            <EntityTypeMapping TypeName="CoursAdoModel.PARTICIPER">
+            <EntityTypeMapping TypeName="EFOracleModel.PARTICIPER">
               <MappingFragment StoreEntitySet="PARTICIPER">
                 <ScalarProperty Name="NUMEMP" ColumnName="NUMEMP" />
                 <ScalarProperty Name="CODESEMI" ColumnName="CODESEMI" />
@@ -414,7 +414,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROJETs">
-            <EntityTypeMapping TypeName="CoursAdoModel.PROJET">
+            <EntityTypeMapping TypeName="EFOracleModel.PROJET">
               <MappingFragment StoreEntitySet="PROJET">
                 <ScalarProperty Name="CODEPROJET" ColumnName="CODEPROJET" />
                 <ScalarProperty Name="NOMPROJET" ColumnName="NOMPROJET" />
@@ -425,7 +425,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SEMINAIREs">
-            <EntityTypeMapping TypeName="CoursAdoModel.SEMINAIRE">
+            <EntityTypeMapping TypeName="EFOracleModel.SEMINAIRE">
               <MappingFragment StoreEntitySet="SEMINAIRE">
                 <ScalarProperty Name="CODESEMI" ColumnName="CODESEMI" />
                 <ScalarProperty Name="CODECOURS" ColumnName="CODECOURS" />
